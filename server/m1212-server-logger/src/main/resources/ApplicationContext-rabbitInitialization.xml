@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="rabbitMqInitializer" class="com.cfw.plugins.mq.rabbitmq.RabbitMQInitializer"
+          c:configurationProperties-ref="rabbitConfigurationProperties"
+          c:rabbitTemplate-ref="rabbitTemplate">
+        <constructor-arg name="rabbitPropertiesList">
+            <list>
+                <bean class="com.cfw.plugins.mq.rabbitmq.RabbitProperties" p:usage="LOG">
+                    <property name="queues">
+                        <list>
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-web-login-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-web-register-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-web-home-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-web-manage-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-server-user-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-server-comment-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-server-description-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-server-movie-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                            <bean class="org.springframework.amqp.core.Queue"
+                                  c:name="m1212-server-type-log-queue"
+                                  c:durable="false"
+                                  c:autoDelete="true"
+                                  c:exclusive="false"
+                            />
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

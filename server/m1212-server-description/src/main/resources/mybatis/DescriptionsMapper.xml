@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 指定的是映射接口的完整路劲名 -->
+<mapper namespace="com.cfw.m1212.server.descriptions.mapper.DescriptionsMapper">
+	
+	<!-- Insert a abstract must with its full information. -->
+	<insert id="insertOne" parameterType="Descriptions">
+		<selectKey keyProperty="id" order="AFTER"  resultType="Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO 
+			descriptions(
+				abstract_,
+				descriptions,
+				deleted
+			) 
+		VALUES(
+			#{abstract_},
+			#{descriptions},
+			#{deleted}
+		)
+	</insert>
+	
+	<!-- 2016.06.01 16:41 -->
+	<update id="updateOne" parameterType="Descriptions">
+		UPDATE
+			descriptions
+		<set>
+			deleted = #{deleted}
+			<if test="abstract_ != '' and abstract_ != null">
+				,abstract_ = #{abstract_}
+			</if>
+			<if test="descriptions != '' and descriptions != null">
+				,descriptions = #{descriptions}
+			</if>
+		</set>
+		<where>
+			id = #{id}
+		</where>
+	</update>
+	
+</mapper>

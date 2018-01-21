@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="/plugins/jquery-2.1.1/jquery.min.js"></script>
+	<script src="/plugins/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="/plugins/angular-1.4.9/angular.min.js"></script>
+	<link href="/plugins/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/plugins/font-awesome-4.5.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/css/sidebarPrev.css">
+	<script type="text/javascript" src="/js/upload/mananger.js"></script>
+	
+	<!-- 编辑器 -->
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/froala_editor.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/froala_style.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/code_view.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/colors.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/draggable.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/emoticons.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/image_manager.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/image.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/line_breaker.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/table.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/char_counter.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/fullscreen.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/quick_insert.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/plugins/file.css">
+	<link rel="stylesheet" href="/plugins/froala_editor_2.2.1/css/codemirror.css">
+	
+	<!-- 图片上传 -->
+	<script type="text/javascript" src="/js/upload/fileupload.js"></script>
+	<script type="text/javascript" src="/js/upload/jquery.upload.js"></script>
+	<style>
+        #editor {
+            width: 100%;
+            margin: auto;
+            text-align: left;
+        }
+    </style>
+	
+</head>
+<body ng-app="moviesApp" ng-controller="moviesController" class="ly-bg">
+	<div id="cl-wrapper" class="animate-collapse">
+		<div id="pcont" class="cl-main">
+			<div class="main">
+				<div class="container-row" style="width:80%">
+					<div class="padding-ex">
+						<ul class="breadcrumb">
+							<li><a href="/UserCenter.html">管理</a></li>
+							<li class="active">影片</li>
+						</ul>
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="block-flat">
+									<div class="header">
+										<h3>{{movieOperationName}}</h3>
+									</div>
+									<div class="content">
+										<div id="editor">
+											<input id="tempFilePath" name="tempFilePath" style="display:none;"/>
+											<input id="id" name="id" style="display:none;"  ng-model="movie.id"/>
+											<div class="text-right">
+												<button id="chooseFile" class="btn btn-info">选择图片</button>
+											</div><br/>
+											<div class="text-center">
+												<img id="fileImg" class="img-rounded" style="width:80%" ng-src="{{movie.pic}}" src="/images/1.jpg"><br/>
+											</div><br/>
+											<input id="movieName" name="name" class="form-control" placeholder="影片名称..." ng-model="movie.name"/><br/>
+											
+											<ul class="nav nav-tabs nav-justified">
+												<li ng-repeat="type in movieType">
+													<label>
+														<input id="movieType{{type.id}}" name="checkBox" value="{{type.id}}" type="checkbox" ng-click="selectType()" />
+														{{type.type_name}}
+													</label>
+												</li>
+											</ul><br />
+											
+											<textarea id="abstract_" class="form-control" name="abstract_" placeholder="请输入影片摘要..." ng-model="movie.description.abstract_"></textarea><br/>
+										    <textarea id="edit" name="description" style="margin-top: 30px;"></textarea>
+										    <button id="sub" ng-click="submit()" class="btn btn-default" type="submit">提交</button>
+										    
+									  	</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/froala_editor.min.js" ></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/align.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/code_beautifier.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/code_view.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/colors.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/emoticons.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/draggable.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/file.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/font_size.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/font_family.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/image.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/line_breaker.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/link.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/lists.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/paragraph_format.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/paragraph_style.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/table.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/url.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/entities.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/char_counter.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/inline_style.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/save.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/fullscreen.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/quote.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/plugins/quick_insert.min.js"></script>
+  <script type="text/javascript" src="/plugins/froala_editor_2.2.1/js/languages/zh_cn.js"></script>
+  <script src="/js/admin/edit.js"></script>
+</body>
+</html>
