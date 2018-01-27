@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>m1212</artifactId>
-        <groupId>com.cfw</groupId>
+        <groupId>com.cfw.m1212</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cfw</groupId>
+    <groupId>com.cfw.m1212.web</groupId>
     <artifactId>m1212-web-test</artifactId>
 
     <dependencies>

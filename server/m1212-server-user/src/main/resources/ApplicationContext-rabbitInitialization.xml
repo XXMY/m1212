@@ -14,7 +14,7 @@
         <property name="messageListener" ref="userServiceExporter" />
     </bean>-->
 
-    <bean id="rabbitMqInitializer" class="com.cfw.plugins.mq.rabbitmq.RabbitMQInitializer"
+    <!--<bean id="rabbitMqInitializer" class="com.cfw.plugins.mq.rabbitmq.RabbitMQInitializer"
           c:configurationProperties-ref="rabbitConfigurationProperties"
           c:rabbitTemplate-ref="rabbitTemplate"
     >
@@ -70,5 +70,5 @@
                 </bean>
             </list>
         </constructor-arg>
-    </bean>
+    </bean>-->
 </beans>
