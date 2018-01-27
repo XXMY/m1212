@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication(scanBasePackages = {
         "com.cfw.plugins",
         "com.cfw.m1212"})
-@ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
+//@ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
 public class Application {
 
     public static void main(String [] args) throws Exception {

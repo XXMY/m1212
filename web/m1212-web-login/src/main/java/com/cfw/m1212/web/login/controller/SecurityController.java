@@ -4,8 +4,13 @@ import com.cfw.m1212.web.commons.controller.BaseController;
 import com.cfw.m1212.web.commons.enums.ResponseTypeEnum;
 import com.cfw.m1212.web.commons.vo.MoviesResponse;
 import com.cfw.m1212.web.commons.vo.RsaVO;
+import com.cfw.m1212.web.login.service.UserLoginService;
 import com.cfw.plugins.security.properties.SecurityProperties;
 import com.cfw.plugins.security.rsa.RSAKeyPairs;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +26,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/Login/Security")
 public class SecurityController extends BaseController {
-    //private Log logger = LogFactory.getLog(SecurityController.class);
+    private Logger logger = LoggerFactory.getLogger(SecurityController.class);
 
     /**
      * 获得秘钥
@@ -33,6 +38,7 @@ public class SecurityController extends BaseController {
     @ResponseBody
     public MoviesResponse key(){
         String requestId = UUID.randomUUID().toString();
+        this.logger.info("[/Login/Security/key] RequestId={}",requestId);
         MoviesResponse response = new MoviesResponse();
 
         try{
@@ -45,8 +51,8 @@ public class SecurityController extends BaseController {
             rsaVO.setKey(Base64Utils.encodeToString(publicKey.getEncoded()));
             response.setData(rsaVO);
         }catch(Exception e){
-            //this.logger.error("[/User/key] " + e.getMessage() + "requestId="+requestId,e);
-            response = buildResponse(ResponseTypeEnum.SYSTEM_ERROR);
+            this.logger.error("[/User/key] " + e.getMessage() + "requestId="+requestId,e);
+            response = buildResponse(ResponseTypeEnum.SYSTEM_ERROR,requestId);
         }
 
         return response;

@@ -16,16 +16,13 @@ public class MoviesResponse {
 
 	private String requestId;
 
-	public MoviesResponse() {
-		super();
-		this.requestId = UUID.randomUUID().toString();
-		// TODO Auto-generated constructor stub
-	}
+	public MoviesResponse() {}
 
-	public MoviesResponse(int code, String message) {
+	public MoviesResponse(int code, String message,String requestId) {
 		super();
 		this.code = code;
 		this.message = message;
+		this.requestId = requestId;
 	}
 
 	public int getCode() {

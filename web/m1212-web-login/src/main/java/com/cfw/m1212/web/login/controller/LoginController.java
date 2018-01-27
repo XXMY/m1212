@@ -11,6 +11,8 @@ import com.cfw.plugins.security.rsa.RSAKeyPairs;
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.security.PrivateKey;
+import java.util.UUID;
 
 /**
  * @author Fangwei_Cai
@@ -31,7 +34,7 @@ public class LoginController extends BaseController {
 	@Resource(name = "userLoginService")
 	private UserLoginService userLoginService;
 
-	private Log logger = LogFactory.getLog(LoginController.class);
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	/**
 	 * Check user whether logined.
@@ -43,17 +46,25 @@ public class LoginController extends BaseController {
 	@RequestMapping(value="/logined",method=RequestMethod.GET)
 	@ResponseBody
 	public MoviesResponse logined(HttpSession session){
-		this.logger.info("[/Login/logined]");
+        String requestId = UUID.randomUUID().toString();
+        this.logger.info("[/Login/logined] Request Parameters: sessionId={}, requestId={}",session.getId(),requestId);
+        MoviesResponse result = new MoviesResponse();
 
-		MoviesResponse result = new MoviesResponse();
-		// Get the information from cache.
-		User user = this.userLoginService.checkLogined(session.getId());
-		if(user == null){
-			result = buildResponse(ResponseTypeEnum.USER_NOT_LOGINED);
-		}else{
-			result = buildResponse(ResponseTypeEnum.SUCCESS);
-			result.setData(user);
-		}
+		try{
+            // Get the information from cache.
+            User user = this.userLoginService.checkLogined(session.getId());
+            if(user == null){
+                result = buildResponse(ResponseTypeEnum.USER_NOT_LOGINED,requestId);
+            }else{
+                result = buildResponse(ResponseTypeEnum.SUCCESS,requestId);
+                result.setData(user);
+            }
+        }catch (Exception e){
+		    this.logger.error("[/Login/logined] Exception: "+e.getMessage() +", requestId="+requestId,e);
+		    result = buildResponse(ResponseTypeEnum.SYSTEM_ERROR,requestId);
+        }
+
+		this.logger.info("[/Login/logined] Response: {}",result);
 
 		return result;
 	}
@@ -68,28 +79,34 @@ public class LoginController extends BaseController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
 	public MoviesResponse login(HttpSession session, RsaVO rsaVO){
-		MoviesResponse result = new MoviesResponse();
-		User user = null;
+	    String requestId = UUID.randomUUID().toString();
+		this.logger.info("[/Login/login] Request Parameters: rsaVO={}, sessionId={}, requestId={}",rsaVO,session.getId(),requestId);
+        MoviesResponse result = new MoviesResponse();
+        User user = null;
 
 		try{
 			String decoded = RSA.decodeBase64String((PrivateKey) RSAKeyPairs.publicPrivateKeys[1].get(rsaVO.getV()),rsaVO.getData());
 			Gson gson = new Gson();
-			user = (User)gson.fromJson(decoded,User.class);
-			user = userLoginService.userLogin(session.getId(),user.getUsername(),user.getPassword());
+			User decodedUser = (User)gson.fromJson(decoded,User.class);
+			this.logger.info("[/Login/login] Decoded: decodedUser={}, requestId={}",decoded,requestId);
+
+			user = userLoginService.userLogin(session.getId(),decodedUser.getUsername(),decodedUser.getPassword(),requestId);
 		}catch(Exception e){
-			user = null;
+			this.logger.info("[/Login/login] Exception: " + e.getMessage() + ", requestId="+requestId,e);
 		}
 
 		if(user != null){
-			result = buildResponse(ResponseTypeEnum.SUCCESS);
+			result = buildResponse(ResponseTypeEnum.SUCCESS,requestId);
+			result.setData(user);
 		}else{
-			result = buildResponse(ResponseTypeEnum.USER_NOT_EXISTS);
+			result = buildResponse(ResponseTypeEnum.USER_NOT_EXISTS,requestId);
 		}
-		
-		
+
+		this.logger.info("[/Login/login] Response: {}",result);
+
 		return result;
 	}
-	
+
 	/**
 	 * @author Fangwei_Cai
 	 * @time since 2016年5月31日 下午3:13:36
@@ -99,8 +116,10 @@ public class LoginController extends BaseController {
 	@RequestMapping("/logout")
 	@ResponseBody
 	public MoviesResponse userLogout(HttpSession session){
+	    String requestId = UUID.randomUUID().toString();
+	    this.logger.info("[/Login/logout] Request Parameters: sessionId={}, requestId={}", session.getId(),requestId);
 		session.invalidate();
-		
-		return buildResponse(ResponseTypeEnum.SUCCESS);
+
+		return buildResponse(ResponseTypeEnum.SUCCESS,requestId);
 	}
 }

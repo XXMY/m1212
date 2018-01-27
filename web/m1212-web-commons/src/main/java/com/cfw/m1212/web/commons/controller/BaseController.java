@@ -18,14 +18,14 @@ public abstract class BaseController {
 	 * @author CaiFangwei
 	 * @time since 2017-3-11 19:49:21
 	 */
-	public MoviesResponse buildResponse(int code, String message){
-		MoviesResponse moviesResponse = new MoviesResponse(code,message);
+	public MoviesResponse buildResponse(int code, String message,String requestId){
+		MoviesResponse moviesResponse = new MoviesResponse(code,message,requestId);
 		
 		return moviesResponse;
 	}
 
-	public MoviesResponse buildResponse(ResponseTypeEnum type){
+	public MoviesResponse buildResponse(ResponseTypeEnum type,String requestId){
 
-		return this.buildResponse(type.getCode(),type.getDescription());
+		return this.buildResponse(type.getCode(),type.getDescription(),requestId);
 	}
 }

@@ -14,7 +14,6 @@ import org.springframework.util.StringUtils;
  * @time since 2016年3月26日 下午8:07:16
  */
 @Service("userService")
-//@CRpcService
 public class UserServiceImpl implements UserService {
 
 	@Autowired
