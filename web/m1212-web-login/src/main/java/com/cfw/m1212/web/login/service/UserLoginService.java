@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class UserLoginService {
 	private Logger logger = LoggerFactory.getLogger(UserLoginService.class);
 
-	@Autowired
+	@Resource
 	private ServerUserService serverUserService;
 
 	@Autowired
@@ -84,8 +85,10 @@ public class UserLoginService {
 		// Call remote procedure.
 		try {
 		    ServerResponseBO response = serverUserService.getBriefInfoWithPassword(username,password,requestId);
-		    if(response != null && response.getCode() == ResponseTypeEnum.SUCCESS.getType())
-		    	return (User) response.getData();
+		    if(response != null && response.getCode() == ResponseTypeEnum.SUCCESS.getType()){
+		    	Gson gson = new Gson();
+		    	return gson.fromJson((String)response.getData(),User.class);
+			}
 		} catch (Exception e) {
             this.logger.error(e.getMessage(),e);
 		}

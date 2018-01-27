@@ -13,7 +13,7 @@
         </RabbitMQ>-->
     </Appenders>
     <Loggers>
-        <logger name="com.cfw.m1212" level="DEBUG" />
+        <!--<logger name="com.cfw.m1212" level="DEBUG" />-->
         <Root level="INFO">
             <AppenderRef ref="Console" />
             <!--<AppenderRef ref="RabbitMQ" />-->

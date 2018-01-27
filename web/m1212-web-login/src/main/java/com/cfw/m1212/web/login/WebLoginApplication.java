@@ -1,9 +1,12 @@
-package com.cfw.m1212.server.user;
+package com.cfw.m1212.web.login;
 
+import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Created by Cfw on 2017/3/10.
@@ -11,17 +14,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {
         "com.cfw.plugins",
         "com.cfw.m1212"})
+@EnableFeignClients
 //@ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
-public class ServerUserApplication {
-
-    private static Logger logger = LoggerFactory.getLogger(ServerUserApplication.class);
+public class WebLoginApplication {
+    private static Logger logger = LoggerFactory.getLogger(WebLoginApplication.class);
 
     public static void main(String [] args) throws Exception {
         logger.info("System startup ...");
+        ApplicationContext applicationContext = null;
         try{
-            SpringApplication.run(ServerUserApplication.class);
+            applicationContext = SpringApplication.run(WebLoginApplication.class);
         }catch (Exception e){
-            throw new Exception(e);
+            logger.error(e.getMessage(),e);
         }
         logger.info("System startup done.");
     }

@@ -30,7 +30,7 @@ public interface UsersMapper extends BaseMapper<User> {
 	 * @param username
 	 * @return
 	 */
-	@Select("SELECT id,user_key as userKey, username, head_pic, type FROM users WHERE username = #{username} limit 1")
+	@Select("SELECT id, username, head_pic, type FROM users WHERE username = #{username} limit 1")
     User selectUserByName(@Param("username") String username);
 
 	/**
