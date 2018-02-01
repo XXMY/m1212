@@ -23,7 +23,6 @@ public class UsersDao {
 	 * @author fwCai
 	 * @since 2016.03.27 10:08
 	 */
-	
 	public int addUser(User user) {
 		return this.usersMapper.insertOne(user);
 	}

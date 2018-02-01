@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {
         "com.cfw.plugins",
         "com.cfw.m1212"})
-public class Application {
+public class WebTestApplication {
 
     public static void main(String [] args){
-        SpringApplication.run(Application.class);
+        SpringApplication.run(WebTestApplication.class);
     }
 }

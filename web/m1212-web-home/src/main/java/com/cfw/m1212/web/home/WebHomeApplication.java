@@ -1,4 +1,4 @@
-package com.cfw.m1212.server.type;
+package com.cfw.m1212.web.home;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,12 +11,12 @@ import org.springframework.context.annotation.ImportResource;
         "com.cfw.plugins",
         "com.cfw.m1212"})
 @ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
-public class Application {
+public class WebHomeApplication {
 
     public static void main(String [] args) throws Exception {
         System.out.println("System startup ...");
         try{
-            SpringApplication.run(Application.class);
+            SpringApplication.run(WebHomeApplication.class);
         }catch (Exception e){
             throw new Exception(e);
         }

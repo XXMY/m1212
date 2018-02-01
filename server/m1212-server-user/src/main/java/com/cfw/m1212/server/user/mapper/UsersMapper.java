@@ -1,9 +1,12 @@
 package com.cfw.m1212.server.user.mapper;
 
 import com.cfw.m1212.model.User;
+//import com.cfw.plugins.database.mapper.BaseMapper;
+//import org.apache.ibatis.annotations.Mapper;
+//import org.apache.ibatis.annotations.Param;
+//import org.apache.ibatis.annotations.Select;
 import com.cfw.plugins.database.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +25,7 @@ public interface UsersMapper extends BaseMapper<User> {
      * @return
      */
     @Select("SELECT COUNT(id) FROM users WHERE username = #{username}")
-	int selectUserNumber(@Param("username") String username);
+	int selectUserNumber(/*@Param("username")*/ String username);
 	
 	/**
 	 * @author Fangwei_Cai
@@ -31,7 +34,7 @@ public interface UsersMapper extends BaseMapper<User> {
 	 * @return
 	 */
 	@Select("SELECT id,user_key as userKey, username, head_pic, type FROM users WHERE username = #{username} limit 1")
-    User selectUserByName(@Param("username") String username);
+    User selectUserByName(/*@Param("username")*/ String username);
 
 	/**
 	 * @param username
@@ -41,5 +44,5 @@ public interface UsersMapper extends BaseMapper<User> {
 	 * @since 2017-3-12 18:43:55
 	 */
 	@Select("SELECT username, head_pic, type FROM users WHERE username = #{username} AND password = #{password} limit 1")
-    User selectUserInBrief(@Param("username") String username, @Param("password") String password);
+    User selectUserInBrief(/*@Param("username")*/ String username, /*@Param("password")*/ String password);
 }

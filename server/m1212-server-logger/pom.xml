@@ -21,6 +21,10 @@
             <exclusions>
                 <exclusion>
                     <groupId>com.cfw.plugins</groupId>
+                    <artifactId>plugin-logger</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.cfw.plugins</groupId>
                     <artifactId>plugin-database</artifactId>
                 </exclusion>
                 <exclusion>
@@ -28,6 +32,11 @@
                     <artifactId>plugin-redis</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.cfw.plugins</groupId>
+            <artifactId>plugin-logger</artifactId>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

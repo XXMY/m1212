@@ -1,6 +1,6 @@
 package dao;
 
-import com.cfw.m1212.server.comment.Application;
+import com.cfw.m1212.server.comment.ServerCommentApplication;
 import com.cfw.m1212.server.comment.dao.CommentDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by Duskrain on 2017/5/6.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = ServerCommentApplication.class)
 public class CommentDaoTest {
 
     @Autowired

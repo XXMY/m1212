@@ -1,7 +1,8 @@
-package com.cfw.m1212.web.home;
+package com.cfw.m1212.web.manage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -10,13 +11,14 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication(scanBasePackages = {
         "com.cfw.plugins",
         "com.cfw.m1212"})
+@ServletComponentScan
 @ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
-public class Application {
+public class WebManageApplication {
 
     public static void main(String [] args) throws Exception {
         System.out.println("System startup ...");
         try{
-            SpringApplication.run(Application.class);
+            SpringApplication.run(WebManageApplication.class);
         }catch (Exception e){
             throw new Exception(e);
         }

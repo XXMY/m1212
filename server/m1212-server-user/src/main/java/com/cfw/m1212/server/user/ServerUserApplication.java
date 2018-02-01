@@ -2,7 +2,6 @@ package com.cfw.m1212.server.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportResource;
 
 /**
  * Created by Cfw on 2017/3/10.
@@ -11,12 +10,12 @@ import org.springframework.context.annotation.ImportResource;
         "com.cfw.plugins",
         "com.cfw.m1212"})
 //@ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
-public class Application {
+public class ServerUserApplication {
 
     public static void main(String [] args) throws Exception {
         System.out.println("System startup ...");
         try{
-            SpringApplication.run(Application.class);
+            SpringApplication.run(ServerUserApplication.class);
         }catch (Exception e){
             throw new Exception(e);
         }
