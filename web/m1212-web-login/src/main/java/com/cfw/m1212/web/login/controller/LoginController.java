@@ -87,7 +87,7 @@ public class LoginController extends BaseController {
 		try{
 			String decoded = RSA.decodeBase64String((PrivateKey) RSAKeyPairs.publicPrivateKeys[1].get(rsaVO.getV()),rsaVO.getData());
 			Gson gson = new Gson();
-			User decodedUser = (User)gson.fromJson(decoded,User.class);
+			User decodedUser = gson.fromJson(decoded,User.class);
 			this.logger.info("[/Login/login] Decoded: decodedUser={}, requestId={}",decoded,requestId);
 
 			user = userLoginService.userLogin(session.getId(),decodedUser.getUsername(),decodedUser.getPassword(),requestId);

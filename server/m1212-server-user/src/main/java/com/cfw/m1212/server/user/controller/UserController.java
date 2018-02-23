@@ -13,10 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("/server/user")
 public class UserController implements ServerUserControllerInterface{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -26,9 +27,8 @@ public class UserController implements ServerUserControllerInterface{
 
     @Override
     @RequestMapping("/getBriefInfo")
-    @ResponseBody
-    public ServerResponseBO getBriefInfo(String username,String requestId) {
-        ServerResponseBO response = new ServerResponseBO();
+    public ServerResponseBO<User> getBriefInfo(String username,String requestId) {
+        ServerResponseBO<User> response = new ServerResponseBO<User>();
         response.setRequestId(requestId);
         this.logger.info("[/server/user/getBriefInfo] Request Parameters: username={}, requestId={}",username,requestId);
         try{
@@ -57,9 +57,8 @@ public class UserController implements ServerUserControllerInterface{
 
     @Override
     @RequestMapping("/getBriefInfoWithPassword")
-    @ResponseBody
-    public ServerResponseBO getBriefInfoWithPassword(String username, String password, String requestId) {
-        ServerResponseBO response = new ServerResponseBO();
+    public ServerResponseBO<User> getBriefInfoWithPassword(String username, String password, String requestId) {
+        ServerResponseBO<User> response = new ServerResponseBO<User>();
         response.setRequestId(requestId);
         this.logger.info("[/server/user/getBriefInfo] Request Parameters: username={}, password={}, requestId={}",username,password,requestId);
         try{
@@ -89,9 +88,8 @@ public class UserController implements ServerUserControllerInterface{
 
     @Override
     @RequestMapping(value = "/modifyUsersInfo",method = RequestMethod.POST)
-    @ResponseBody
-    public ServerResponseBO modifyUsersInfo(User newUser, String requestId) {
-        ServerResponseBO response = new ServerResponseBO();
+    public ServerResponseBO<Boolean> modifyUsersInfo(User newUser, String requestId) {
+        ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);
         this.logger.info("[/server/user/modifyUsersInfo] Request Parameters: newUser={}, requestId={}",newUser,requestId);
         try{
@@ -120,9 +118,8 @@ public class UserController implements ServerUserControllerInterface{
 
     @Override
     @RequestMapping("/userExists")
-    @ResponseBody
-    public ServerResponseBO userExists(String userName, String requestId) {
-        ServerResponseBO response = new ServerResponseBO();
+    public ServerResponseBO<Boolean> userExists(String userName, String requestId) {
+        ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);
         this.logger.info("[/server/user/userExists] Request Parameters: userName={}, requestId={}",userName,requestId);
         try{
@@ -151,9 +148,8 @@ public class UserController implements ServerUserControllerInterface{
 
     @Override
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    @ResponseBody
-    public ServerResponseBO register(User user, String requestId) {
-        ServerResponseBO response = new ServerResponseBO();
+    public ServerResponseBO<Boolean> register(User user, String requestId) {
+        ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);
         this.logger.info("[/server/user/register] Request Parameters: user={}, requestId={}",user,requestId);
         try{

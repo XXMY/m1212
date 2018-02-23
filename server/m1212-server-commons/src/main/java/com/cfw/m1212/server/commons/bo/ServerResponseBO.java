@@ -1,9 +1,9 @@
 package com.cfw.m1212.server.commons.bo;
 
-public class ServerResponseBO {
+public class ServerResponseBO<T> {
     private int code;
     private String description;
-    private Object data;
+    private T data;
     private String requestId;
 
     public int getCode() {
@@ -22,11 +22,11 @@ public class ServerResponseBO {
         this.description = description;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 

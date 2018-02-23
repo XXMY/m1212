@@ -84,10 +84,9 @@ public class UserLoginService {
 
 		// Call remote procedure.
 		try {
-		    ServerResponseBO response = serverUserService.getBriefInfoWithPassword(username,password,requestId);
+		    ServerResponseBO<User> response = serverUserService.getBriefInfoWithPassword(username,password,requestId);
 		    if(response != null && response.getCode() == ResponseTypeEnum.SUCCESS.getType()){
-		    	Gson gson = new Gson();
-		    	return gson.fromJson((String)response.getData(),User.class);
+		    	return response.getData();
 			}
 		} catch (Exception e) {
             this.logger.error(e.getMessage(),e);
