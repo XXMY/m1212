@@ -1,6 +1,6 @@
 package com.cfw.m1212.web.login.controller;
 
-import com.cfw.m1212.model.User;
+import com.cfw.m1212.model.db.User;
 import com.cfw.m1212.web.commons.controller.BaseController;
 import com.cfw.m1212.web.commons.enums.ResponseTypeEnum;
 import com.cfw.m1212.web.commons.vo.MoviesResponse;
@@ -9,8 +9,6 @@ import com.cfw.m1212.web.login.service.UserLoginService;
 import com.cfw.plugins.security.rsa.RSA;
 import com.cfw.plugins.security.rsa.RSAKeyPairs;
 import com.google.gson.Gson;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

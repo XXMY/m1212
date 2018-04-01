@@ -1,6 +1,6 @@
 package com.cfw.m1212.api;
 
-import com.cfw.m1212.model.Comment;
+import com.cfw.m1212.model.db.Comment;
 
 import java.util.List;
 

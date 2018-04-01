@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.home.service;
 
-import com.cfw.m1212.model.Movie;
-import com.cfw.m1212.model.Type;
+import com.cfw.m1212.model.db.Movie;
+import com.cfw.m1212.model.db.Type;
 import com.cfw.m1212.server.commons.reflect.SimpleAssign;
 import com.cfw.m1212.web.commons.dto.Page;
 import com.cfw.plugins.mq.rabbitmq.rpc.client.dispatch.OutboundDispatcher;

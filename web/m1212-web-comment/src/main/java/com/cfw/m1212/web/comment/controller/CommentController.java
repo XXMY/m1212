@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.comment.controller;
 
 import com.cfw.m1212.api.CommentService;
-import com.cfw.m1212.model.Comment;
+import com.cfw.m1212.model.db.Comment;
 import com.cfw.m1212.web.commons.controller.BaseController;
 import com.cfw.m1212.web.commons.enums.ResponseTypeEnum;
 import com.cfw.m1212.web.commons.vo.MoviesResponse;

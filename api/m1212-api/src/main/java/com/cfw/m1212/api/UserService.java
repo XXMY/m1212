@@ -1,6 +1,6 @@
 package com.cfw.m1212.api;
 
-import com.cfw.m1212.model.User;
+import com.cfw.m1212.model.db.User;
 
 /**
  * 用户注册服务接口

@@ -1,6 +1,6 @@
 package com.cfw.m1212.api;
 
-import com.cfw.m1212.model.Description;
+import com.cfw.m1212.model.db.Description;
 
 /**
  * @author Fangwei_Cai

@@ -21,25 +21,7 @@
                     <property name="queues">
                         <list>
                             <bean class="org.springframework.amqp.core.Queue"
-                                  c:name="m1212-server-comment-rpc-queue"
-                                  c:durable="true"
-                                  c:autoDelete="false"
-                                  c:exclusive="false"
-                            />
-                            <bean class="org.springframework.amqp.core.Queue"
-                                  c:name="m1212-server-description-rpc-queue"
-                                  c:durable="true"
-                                  c:autoDelete="false"
-                                  c:exclusive="false"
-                            />
-                            <bean class="org.springframework.amqp.core.Queue"
                                   c:name="m1212-server-movie-rpc-queue"
-                                  c:durable="true"
-                                  c:autoDelete="false"
-                                  c:exclusive="false"
-                            />
-                            <bean class="org.springframework.amqp.core.Queue"
-                                  c:name="m1212-server-type-rpc-queue"
                                   c:durable="true"
                                   c:autoDelete="false"
                                   c:exclusive="false"
@@ -55,45 +37,6 @@
                                         <constructor-arg name="destinationType" value="QUEUE" />
                                         <constructor-arg name="exchange" value="m1212-rpc-exchange"/>
                                         <constructor-arg name="routingKey" value="m1212-server-movie-rpc-key"/>
-                                        <constructor-arg name="arguments">
-                                            <map />
-                                        </constructor-arg>
-                                    </bean>
-                                </property>
-                            </bean>
-                            <bean class="com.cfw.plugins.mq.rabbitmq.binding.CBinding" p:server="m1212-server-comment">
-                                <property name="binding">
-                                    <bean class="org.springframework.amqp.core.Binding">
-                                        <constructor-arg name="destination" value="m1212-server-comment-rpc-queue"/>
-                                        <constructor-arg name="destinationType" value="QUEUE" />
-                                        <constructor-arg name="exchange" value="m1212-rpc-exchange"/>
-                                        <constructor-arg name="routingKey" value="m1212-server-comment-rpc-key"/>
-                                        <constructor-arg name="arguments">
-                                            <map />
-                                        </constructor-arg>
-                                    </bean>
-                                </property>
-                            </bean>
-                            <bean class="com.cfw.plugins.mq.rabbitmq.binding.CBinding" p:server="m1212-server-description">
-                                <property name="binding">
-                                    <bean class="org.springframework.amqp.core.Binding">
-                                        <constructor-arg name="destination" value="m1212-server-description-rpc-queue"/>
-                                        <constructor-arg name="destinationType" value="QUEUE" />
-                                        <constructor-arg name="exchange" value="m1212-rpc-exchange"/>
-                                        <constructor-arg name="routingKey" value="m1212-server-description-rpc-key"/>
-                                        <constructor-arg name="arguments">
-                                            <map />
-                                        </constructor-arg>
-                                    </bean>
-                                </property>
-                            </bean>
-                            <bean class="com.cfw.plugins.mq.rabbitmq.binding.CBinding" p:server="m1212-server-type">
-                                <property name="binding">
-                                    <bean class="org.springframework.amqp.core.Binding">
-                                        <constructor-arg name="destination" value="m1212-server-type-rpc-queue"/>
-                                        <constructor-arg name="destinationType" value="QUEUE" />
-                                        <constructor-arg name="exchange" value="m1212-rpc-exchange"/>
-                                        <constructor-arg name="routingKey" value="m1212-server-type-rpc-key"/>
                                         <constructor-arg name="arguments">
                                             <map />
                                         </constructor-arg>

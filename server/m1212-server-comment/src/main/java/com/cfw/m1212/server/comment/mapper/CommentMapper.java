@@ -1,6 +1,6 @@
 package com.cfw.m1212.server.comment.mapper;
 
-import com.cfw.m1212.model.Comment;
+import com.cfw.m1212.model.db.Comment;
 import com.cfw.plugins.database.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

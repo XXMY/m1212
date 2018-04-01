@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.login.service;
 
-import com.cfw.m1212.model.User;
-import com.cfw.m1212.server.commons.bo.ServerResponseBO;
+import com.cfw.m1212.model.db.User;
+import com.cfw.m1212.model.response.ServerResponseBO;
 import com.cfw.m1212.server.commons.enums.RedisKeyEnum;
 import com.cfw.m1212.server.commons.enums.ResponseTypeEnum;
 import com.cfw.plugins.redis.CRedis;

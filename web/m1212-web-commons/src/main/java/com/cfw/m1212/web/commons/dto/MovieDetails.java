@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.commons.dto;
 
-import com.cfw.m1212.model.Comment;
-import com.cfw.m1212.model.Movie;
+import com.cfw.m1212.model.db.Comment;
+import com.cfw.m1212.model.db.Movie;
 
 import java.io.Serializable;
 import java.util.List;

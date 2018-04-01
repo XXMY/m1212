@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = {
         "com.cfw.plugins",
         "com.cfw.m1212"})
-//@ImportResource(locations = {"classpath:ApplicationContext-*.xml"})
 public class ServerUserApplication {
 
     private static Logger logger = LoggerFactory.getLogger(ServerUserApplication.class);

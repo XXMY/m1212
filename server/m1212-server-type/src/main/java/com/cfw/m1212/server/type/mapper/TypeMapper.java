@@ -1,6 +1,6 @@
 package com.cfw.m1212.server.type.mapper;
 
-import com.cfw.m1212.model.Type;
+import com.cfw.m1212.model.db.Type;
 import com.cfw.plugins.database.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

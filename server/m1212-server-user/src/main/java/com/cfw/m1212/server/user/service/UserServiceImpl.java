@@ -1,7 +1,7 @@
 package com.cfw.m1212.server.user.service;
 
 import com.cfw.m1212.api.UserService;
-import com.cfw.m1212.model.User;
+import com.cfw.m1212.model.db.User;
 import com.cfw.m1212.server.commons.enums.AccountTypeEnum;
 import com.cfw.m1212.server.user.dao.UsersDao;
 import com.cfw.m1212.server.user.util.UniqueGenerator;

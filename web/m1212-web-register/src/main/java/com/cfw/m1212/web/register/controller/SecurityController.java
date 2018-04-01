@@ -48,7 +48,7 @@ public class SecurityController extends BaseController {
             response.setData(rsaVO);
         }catch(Exception e){
             this.logger.error("[/User/key] " + e.getMessage() + "requestId="+requestId,e);
-            response = buildResponse(ResponseTypeEnum.SYSTEM_ERROR);
+            response = buildResponse(ResponseTypeEnum.SYSTEM_ERROR,requestId);
         }
 
         return response;

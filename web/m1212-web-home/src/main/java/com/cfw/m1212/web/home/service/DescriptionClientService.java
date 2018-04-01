@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.home.service;
 
 import com.cfw.m1212.api.DescriptionsService;
-import com.cfw.m1212.model.Description;
+import com.cfw.m1212.model.db.Description;
 import com.cfw.plugins.mq.rabbitmq.rpc.client.dispatch.OutboundDispatcher;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

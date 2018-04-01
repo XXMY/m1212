@@ -1,8 +1,8 @@
 package com.cfw.m1212.web.home.service;
 
 import com.cfw.m1212.api.MovieService;
-import com.cfw.m1212.model.Movie;
-import com.cfw.m1212.model.Type;
+import com.cfw.m1212.model.db.Movie;
+import com.cfw.m1212.model.db.Type;
 import com.cfw.m1212.web.commons.dto.Page;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

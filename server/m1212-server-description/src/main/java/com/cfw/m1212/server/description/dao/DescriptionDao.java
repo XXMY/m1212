@@ -1,6 +1,6 @@
 package com.cfw.m1212.server.description.dao;
 
-import com.cfw.m1212.model.Description;
+import com.cfw.m1212.model.db.Description;
 import com.cfw.m1212.server.description.mapper.DescriptionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

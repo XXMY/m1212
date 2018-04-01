@@ -1,11 +1,11 @@
 package com.cfw.m1212.web.register.service;
 
-import com.cfw.m1212.api.UserService;
-import com.cfw.m1212.model.User;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cfw.m1212.model.db.User;
+import com.cfw.m1212.model.response.ServerResponseBO;
+import com.cfw.m1212.server.commons.enums.ResponseTypeEnum;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author Fangwei_Cai
@@ -14,21 +14,19 @@ import org.springframework.stereotype.Service;
 @Service("registerServiceImpl")
 public class UserRegisterService {
 
-	private Log logger = LogFactory.getLog(UserRegisterService.class);
-
-	@Autowired
-	private UserService remoteUserService;
+	@Resource
+	private ServerUserService serverUserService;
 	
 	/**
 	 * @author fwCai
 	 * @since 2016.03.26 20:12
 	 */
-    public boolean userExists(String username) {
-		try {
-			return this.remoteUserService.userExists(username);
-		} catch (Exception e) {
-			this.logger.error(e.getMessage(),e);
+    public boolean userExists(String username,String requestId) {
+		ServerResponseBO<Boolean> result = this.serverUserService.userExists(username,requestId);
+		if(result != null && result.getCode() == ResponseTypeEnum.SUCCESS.getType()){
+			return result.getData();
 		}
+
 		return false;
 	}
 
@@ -36,12 +34,12 @@ public class UserRegisterService {
 	 * @author fwCai
 	 * @since 2016.03.27 10:11
 	 */
-	public boolean register(User user) {
-		try {
-			return this.remoteUserService.register(user);
-		} catch (Exception e) {
-			this.logger.error(e.getMessage(),e);
+	public boolean register(User user, String requestId) {
+		ServerResponseBO<Boolean> result = this.serverUserService.register(user,requestId);
+		if(result != null && result.getCode() == ResponseTypeEnum.SUCCESS.getType()){
+			return result.getData();
 		}
+
 		return false;
 	}
 

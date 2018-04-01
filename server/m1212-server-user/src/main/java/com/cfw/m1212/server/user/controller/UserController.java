@@ -1,32 +1,26 @@
 package com.cfw.m1212.server.user.controller;
 
 import com.cfw.m1212.api.UserService;
-import com.cfw.m1212.model.User;
-import com.cfw.m1212.server.commons.bo.ServerResponseBO;
-import com.cfw.m1212.server.commons.controller.ServerUserControllerInterface;
+import com.cfw.m1212.feign.user.ServerUserControllerFeign;
+import com.cfw.m1212.model.db.User;
+import com.cfw.m1212.model.response.ServerResponseBO;
 import com.cfw.m1212.server.commons.enums.ResponseTypeEnum;
 import com.google.common.base.Preconditions;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/server/user")
-public class UserController implements ServerUserControllerInterface{
+public class UserController implements ServerUserControllerFeign {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Resource(name = "userService")
     private UserService userService;
 
     @Override
-    @RequestMapping("/getBriefInfo")
     public ServerResponseBO<User> getBriefInfo(String username,String requestId) {
         ServerResponseBO<User> response = new ServerResponseBO<User>();
         response.setRequestId(requestId);
@@ -56,7 +50,6 @@ public class UserController implements ServerUserControllerInterface{
     }
 
     @Override
-    @RequestMapping("/getBriefInfoWithPassword")
     public ServerResponseBO<User> getBriefInfoWithPassword(String username, String password, String requestId) {
         ServerResponseBO<User> response = new ServerResponseBO<User>();
         response.setRequestId(requestId);
@@ -87,7 +80,6 @@ public class UserController implements ServerUserControllerInterface{
     }
 
     @Override
-    @RequestMapping(value = "/modifyUsersInfo",method = RequestMethod.POST)
     public ServerResponseBO<Boolean> modifyUsersInfo(User newUser, String requestId) {
         ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);
@@ -117,7 +109,6 @@ public class UserController implements ServerUserControllerInterface{
     }
 
     @Override
-    @RequestMapping("/userExists")
     public ServerResponseBO<Boolean> userExists(String userName, String requestId) {
         ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);
@@ -147,7 +138,6 @@ public class UserController implements ServerUserControllerInterface{
     }
 
     @Override
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ServerResponseBO<Boolean> register(User user, String requestId) {
         ServerResponseBO<Boolean> response = new ServerResponseBO<Boolean>();
         response.setRequestId(requestId);

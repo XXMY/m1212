@@ -12,6 +12,6 @@
 
     <groupId>com.cfw.m1212.model</groupId>
     <artifactId>m1212-model</artifactId>
-
+    <version>1.0.1-SNAPSHOT</version>
 
 </project>

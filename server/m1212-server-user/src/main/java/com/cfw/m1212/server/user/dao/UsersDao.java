@@ -1,6 +1,6 @@
 package com.cfw.m1212.server.user.dao;
 
-import com.cfw.m1212.model.User;
+import com.cfw.m1212.model.db.User;
 import com.cfw.m1212.server.user.mapper.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

@@ -35,6 +35,7 @@
         <module>web/m1212-web-comment</module>
         <module>web/m1212-web-test</module>
         <module>center/m1212-center-register</module>
+        <module>feign/m1212-feign-user</module>
     </modules>
 
     <parent>

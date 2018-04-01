@@ -1,7 +1,7 @@
 package com.cfw.m1212.server.type.service;
 
 import com.cfw.m1212.api.TypeService;
-import com.cfw.m1212.model.Type;
+import com.cfw.m1212.model.db.Type;
 import com.cfw.m1212.server.type.dao.TypeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

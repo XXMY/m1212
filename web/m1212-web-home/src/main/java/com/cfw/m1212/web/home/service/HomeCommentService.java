@@ -1,7 +1,7 @@
 package com.cfw.m1212.web.home.service;
 
 import com.cfw.m1212.api.CommentService;
-import com.cfw.m1212.model.Comment;
+import com.cfw.m1212.model.db.Comment;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

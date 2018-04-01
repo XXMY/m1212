@@ -1,7 +1,7 @@
 package com.cfw.m1212.server.movie.dao;
 
-import com.cfw.m1212.model.Movie;
-import com.cfw.m1212.model.User;
+import com.cfw.m1212.model.db.Movie;
+import com.cfw.m1212.model.db.User;
 import com.cfw.m1212.server.movie.mapper.MovieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

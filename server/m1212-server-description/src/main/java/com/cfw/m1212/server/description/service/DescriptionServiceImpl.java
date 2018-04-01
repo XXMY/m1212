@@ -1,7 +1,7 @@
 package com.cfw.m1212.server.description.service;
 
 import com.cfw.m1212.api.DescriptionService;
-import com.cfw.m1212.model.Description;
+import com.cfw.m1212.model.db.Description;
 import com.cfw.m1212.server.description.dao.DescriptionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

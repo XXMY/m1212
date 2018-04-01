@@ -1,6 +1,6 @@
 package com.cfw.m1212.api;
 
-import com.cfw.m1212.model.Movie;
+import com.cfw.m1212.model.db.Movie;
 
 import java.util.List;
 

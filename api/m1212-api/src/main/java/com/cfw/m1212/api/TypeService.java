@@ -1,6 +1,6 @@
 package com.cfw.m1212.api;
 
-import com.cfw.m1212.model.Type;
+import com.cfw.m1212.model.db.Type;
 
 import java.util.List;
 

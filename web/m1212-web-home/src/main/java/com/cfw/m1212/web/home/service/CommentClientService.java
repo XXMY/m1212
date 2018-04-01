@@ -1,6 +1,6 @@
 package com.cfw.m1212.web.home.service;
 
-import com.cfw.m1212.model.Comment;
+import com.cfw.m1212.model.db.Comment;
 import com.cfw.plugins.mq.rabbitmq.rpc.client.dispatch.OutboundDispatcher;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

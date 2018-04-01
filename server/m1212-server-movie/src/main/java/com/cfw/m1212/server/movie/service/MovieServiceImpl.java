@@ -2,8 +2,8 @@ package com.cfw.m1212.server.movie.service;
 
 import com.cfw.m1212.api.DescriptionService;
 import com.cfw.m1212.api.MovieService;
-import com.cfw.m1212.model.Description;
-import com.cfw.m1212.model.Movie;
+import com.cfw.m1212.model.db.Description;
+import com.cfw.m1212.model.db.Movie;
 import com.cfw.m1212.server.movie.dao.MovieDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
